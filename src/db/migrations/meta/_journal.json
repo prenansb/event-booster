@@ -5,8 +5,57 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1727037300067,
-      "tag": "0000_woozy_kitty_pryde",
+      "when": 1727105797439,
+      "tag": "0000_perfect_prowler",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1727110790302,
+      "tag": "0001_third_marvel_boy",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1727111516537,
+      "tag": "0002_last_shadowcat",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1727112661029,
+      "tag": "0003_overconfident_sharon_carter",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1727283033473,
+      "tag": "0004_short_hex",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1727284868075,
+      "tag": "0005_gifted_lady_deathstrike",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1727285087385,
+      "tag": "0006_fine_bulldozer",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1727285660661,
+      "tag": "0007_dark_eternity",
       "breakpoints": true
     }
   ]

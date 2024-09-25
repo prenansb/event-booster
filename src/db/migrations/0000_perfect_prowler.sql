@@ -10,8 +10,9 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" text NOT NULL,
 	"email" text NOT NULL,
-	"ticket_number" integer NOT NULL,
-	"amount_of_likes" integer DEFAULT 0 NOT NULL,
+	"ticket_number" serial NOT NULL,
+	"referral_link" text NOT NULL,
+	"users_referred" integer DEFAULT 0 NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint

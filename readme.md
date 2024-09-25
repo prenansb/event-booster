@@ -96,3 +96,9 @@
   16.2 Include setup instructions and dependency listings.
   16.3 Document API usage and provide examples.
   16.4 Prepare a handover report summarizing the project and any future considerations.
+
+
+  # Todo
+   1. change create user to subscribe to event
+   2. add referred_by
+   3. how to fk from the same table

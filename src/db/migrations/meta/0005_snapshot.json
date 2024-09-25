@@ -1,6 +1,6 @@
 {
-  "id": "3d9723be-9810-46aa-8938-402d6c632ac1",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "8d93dd4f-aabd-433a-a191-262344d833bd",
+  "prevId": "c7bd3821-0676-42b1-b21f-3f5af3ff1b1a",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -38,16 +38,15 @@
           "name": "closed_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "events_owner_users_id_fk": {
-          "name": "events_owner_users_id_fk",
+        "events_owner_subscribers_id_fk": {
+          "name": "events_owner_subscribers_id_fk",
           "tableFrom": "events",
-          "tableTo": "users",
+          "tableTo": "subscribers",
           "columnsFrom": [
             "owner"
           ],
@@ -61,8 +60,37 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.users": {
-      "name": "users",
+    "public.hosts": {
+      "name": "hosts",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.subscribers": {
+      "name": "subscribers",
       "schema": "",
       "columns": {
         "id": {
@@ -84,17 +112,29 @@
           "primaryKey": false,
           "notNull": true
         },
+        "event_id": {
+          "name": "event_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
         "ticket_number": {
           "name": "ticket_number",
           "type": "serial",
           "primaryKey": false,
           "notNull": true
         },
+        "referred_by": {
+          "name": "referred_by",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
         "referral_link": {
           "name": "referral_link",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "users_referred": {
           "name": "users_referred",
@@ -112,7 +152,21 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "subscribers_event_id_events_id_fk": {
+          "name": "subscribers_event_id_events_id_fk",
+          "tableFrom": "subscribers",
+          "tableTo": "events",
+          "columnsFrom": [
+            "event_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }

@@ -1,0 +1,1 @@
+ALTER TABLE "subscribers" ALTER COLUMN "event_id" SET NOT NULL;

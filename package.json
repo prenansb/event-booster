@@ -5,8 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/http/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch --env-file=.env src/http/server.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "dotenv -e .env -- drizzle-kit migrate",
+    "db:migrate:test": "dotenv -e .env.test -- drizzle-kit migrate",
+    "db:studio": "dotenv -e .env -- drizzle-kit studio"
   },
   "keywords": [],
   "author": "",
@@ -21,8 +24,10 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
+    "dotenv-cli": "^7.4.2",
     "drizzle-orm": "^0.33.0",
     "fastify": "^5.0.0",
+    "fastify-type-provider-zod": "^3.0.0",
     "pg": "^8.13.0",
     "zod": "^3.23.8"
   }

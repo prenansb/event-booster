@@ -1,7 +1,9 @@
+import { hosts } from '@/db/schema/hosts'
 import { events } from './events'
-import { users } from './users'
+import { subscribers } from './subscribers'
 
 export const schema = {
-  users,
+  subscribers,
   events,
+  hosts,
 }

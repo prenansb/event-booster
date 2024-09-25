@@ -2,6 +2,7 @@
   "editor.formatOnSave": true,
   "cSpell.words": [
     "biomejs",
+    "fastify"
   ],
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"

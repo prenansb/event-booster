@@ -1,6 +1,6 @@
 {
-  "id": "3d9723be-9810-46aa-8938-402d6c632ac1",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "c06341b3-974f-471f-a4f6-8c3ae0939017",
+  "prevId": "2f46c092-0530-41c9-bdb7-8a20eb01e895",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -38,8 +38,7 @@
           "name": "closed_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": false
         }
       },
       "indexes": {},
@@ -84,6 +83,12 @@
           "primaryKey": false,
           "notNull": true
         },
+        "event_id": {
+          "name": "event_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
         "ticket_number": {
           "name": "ticket_number",
           "type": "serial",
@@ -112,7 +117,21 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "users_event_id_events_id_fk": {
+          "name": "users_event_id_events_id_fk",
+          "tableFrom": "users",
+          "tableTo": "events",
+          "columnsFrom": [
+            "event_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }

@@ -1,18 +1,27 @@
-import Fastify from 'fastify'
+import { env } from '@/env'
+import { createSubscriberRoute } from '@/http/routes/create-subscriber'
 
-const fastify = Fastify({
+import { fastify } from 'fastify'
+import {
+  type ZodTypeProvider,
+  serializerCompiler,
+  validatorCompiler,
+} from 'fastify-type-provider-zod'
+
+export const server = fastify({
   logger: true,
-})
+}).withTypeProvider<ZodTypeProvider>()
 
-fastify.get('/', async (request, reply) => {
-  return { hello: 'world' }
-})
+server.setValidatorCompiler(validatorCompiler)
+server.setSerializerCompiler(serializerCompiler)
+
+server.register(createSubscriberRoute)
 
 const start = async () => {
   try {
-    await fastify.listen({ port: 3000 })
+    await server.listen({ port: env.PORT })
   } catch (err) {
-    fastify.log.error(err)
+    server.log.error(err)
     process.exit(1)
   }
 }
