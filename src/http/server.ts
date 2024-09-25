@@ -1,5 +1,6 @@
 import { env } from '@/env'
 import { createSubscriberRoute } from '@/http/routes/create-subscriber'
+import { generateReferralLinkRoute } from '@/http/routes/generate-referral-link'
 
 import { fastify } from 'fastify'
 import {
@@ -15,7 +16,9 @@ export const server = fastify({
 server.setValidatorCompiler(validatorCompiler)
 server.setSerializerCompiler(serializerCompiler)
 
+// Routes
 server.register(createSubscriberRoute)
+server.register(generateReferralLinkRoute)
 
 const start = async () => {
   try {

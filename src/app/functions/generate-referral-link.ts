@@ -13,14 +13,19 @@ type GenerateReferralLinkInput = z.infer<typeof generateReferralLinkInput>
 export async function generateReferralLink(input: GenerateReferralLinkInput) {
   const { subscriberId } = input
 
-  try {
-    const referralLink = await db
-      .update(subscribers)
-      .set({ referralLink: referralLinkGenerator() })
-      .where(eq(subscribers.id, subscriberId))
-    return referralLink
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  } catch (e: any) {
-    throw new Error(e.message)
+  const linkAlreadyExists = await db
+    .select({ link: subscribers.referralLink })
+    .from(subscribers)
+    .where(eq(subscribers.id, subscriberId))
+
+  if (linkAlreadyExists[0].link) {
+    throw new Error('User already has a referral link.')
   }
+
+  const referralLink = await db
+    .update(subscribers)
+    .set({ referralLink: referralLinkGenerator({ subscriberId }) })
+    .where(eq(subscribers.id, subscriberId))
+
+  return referralLink
 }
