@@ -14,7 +14,7 @@ const createSubscriberInput = z.object({
 type CreateSubscriberInput = z.infer<typeof createSubscriberInput>
 
 export async function createSubscriber(input: CreateSubscriberInput) {
-  const { email, name, event_id, referral } = input
+  const { email, name, event_id, referral } = createSubscriberInput.parse(input)
 
   const emailAlreadyExists = await db
     .select()

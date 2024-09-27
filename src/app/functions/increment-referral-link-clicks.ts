@@ -14,7 +14,7 @@ type IncrementReferralLinkClicksInput = z.infer<
 export async function incrementReferralLinkClicks(
   input: IncrementReferralLinkClicksInput
 ) {
-  const { referralId } = input
+  const { referralId } = incrementReferralLinkClicksInput.parse(input)
 
   const [result] = await db
     .update(subscribers)

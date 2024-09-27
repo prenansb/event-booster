@@ -12,7 +12,7 @@ const generateReferralLinkInput = z.object({
 type GenerateReferralLinkInput = z.infer<typeof generateReferralLinkInput>
 
 export async function generateReferralLink(input: GenerateReferralLinkInput) {
-  const { subscriberId, eventId } = input
+  const { subscriberId, eventId } = generateReferralLinkInput.parse(input)
 
   const linkAlreadyExists = await db
     .select({ link: subscribers.referralLink })
