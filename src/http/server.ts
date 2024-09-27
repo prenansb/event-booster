@@ -1,5 +1,6 @@
 import { env } from '@/env'
 import { createSubscriberRoute } from '@/http/routes/create-subscriber'
+import { eventInviteRoute } from '@/http/routes/event-invite'
 import { generateReferralLinkRoute } from '@/http/routes/generate-referral-link'
 
 import { fastify } from 'fastify'
@@ -19,6 +20,7 @@ server.setSerializerCompiler(serializerCompiler)
 // Routes
 server.register(createSubscriberRoute)
 server.register(generateReferralLinkRoute)
+server.register(eventInviteRoute)
 
 const start = async () => {
   try {

@@ -1,0 +1,1 @@
+ALTER TABLE "subscribers" ALTER COLUMN "referral_link_clicks" SET DEFAULT 0;

@@ -1,0 +1,1 @@
+ALTER TABLE "subscribers" ADD COLUMN "referral_link_clicks" serial NOT NULL;

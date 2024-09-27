@@ -1,5 +1,6 @@
 export function referralLinkGenerator({
   subscriberId,
-}: { subscriberId: string }) {
-  return `https://www.eventbooster.com/?ref=${subscriberId}`
+  eventId,
+}: { subscriberId: string; eventId: string }) {
+  return `http://localhost:3333/event/${eventId}?ref=${subscriberId}`
 }

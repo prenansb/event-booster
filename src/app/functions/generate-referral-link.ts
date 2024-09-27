@@ -6,12 +6,13 @@ import { z } from 'zod'
 
 const generateReferralLinkInput = z.object({
   subscriberId: z.string(),
+  eventId: z.string(),
 })
 
 type GenerateReferralLinkInput = z.infer<typeof generateReferralLinkInput>
 
 export async function generateReferralLink(input: GenerateReferralLinkInput) {
-  const { subscriberId } = input
+  const { subscriberId, eventId } = input
 
   const linkAlreadyExists = await db
     .select({ link: subscribers.referralLink })
@@ -22,10 +23,15 @@ export async function generateReferralLink(input: GenerateReferralLinkInput) {
     throw new Error('User already has a referral link.')
   }
 
-  const referralLink = await db
+  const referralLink = referralLinkGenerator({
+    subscriberId,
+    eventId,
+  })
+
+  await db
     .update(subscribers)
-    .set({ referralLink: referralLinkGenerator({ subscriberId }) })
+    .set({ referralLink })
     .where(eq(subscribers.id, subscriberId))
 
-  return referralLink
+  return { referralLink }
 }

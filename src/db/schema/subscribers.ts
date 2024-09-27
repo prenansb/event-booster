@@ -13,12 +13,10 @@ export const subscribers = pgTable('subscribers', {
   name: text('name').notNull(),
   email: text('email').notNull(),
   eventId: uuid('event_id')
-    .notNull()
-    .unique()
-    .references(() => events.id),
+    .references(() => events.id)
+    .notNull(),
   ticketNumber: serial('ticket_number').notNull(),
-  referredBy: uuid('referred_by'),
   referralLink: text('referral_link'),
-  usersReferred: integer('users_referred').notNull().default(0),
+  referralLinkClicks: integer('referral_link_clicks').default(0),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })

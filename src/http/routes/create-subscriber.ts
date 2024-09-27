@@ -12,12 +12,16 @@ export const createSubscriberRoute: FastifyPluginAsyncZod = async server => {
           name: z.string().min(2),
           event_id: z.string(),
         }),
+        querystring: z.object({
+          ref: z.string().optional(),
+        }),
       },
     },
     async (request, reply) => {
       const { email, name, event_id } = request.body
+      const { ref: referral } = request.query
 
-      const create = await createSubscriber({ email, name, event_id })
+      const create = await createSubscriber({ email, name, event_id, referral })
 
       return create
     }

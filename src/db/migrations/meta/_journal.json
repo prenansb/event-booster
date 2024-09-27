@@ -57,6 +57,48 @@
       "when": 1727285660661,
       "tag": "0007_dark_eternity",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1727384271574,
+      "tag": "0008_mighty_vapor",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1727388229222,
+      "tag": "0009_easy_leopardon",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1727452088268,
+      "tag": "0010_right_dagger",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1727453566499,
+      "tag": "0011_absent_captain_stacy",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1727454233111,
+      "tag": "0012_woozy_lyja",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1727460470586,
+      "tag": "0013_fuzzy_goliath",
+      "breakpoints": true
     }
   ]
 }
