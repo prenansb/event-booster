@@ -2,6 +2,7 @@ import { env } from '@/env'
 import { createSubscriberRoute } from '@/http/routes/create-subscriber'
 import { eventInviteRoute } from '@/http/routes/event-invite'
 import { generateReferralLinkRoute } from '@/http/routes/generate-referral-link'
+import { getReferralRankRoute } from '@/http/routes/get-referral-rank'
 import { getSubscribersBySubscriberIdRoute } from '@/http/routes/get-subscribers-by-subscriber-id'
 
 import { fastify } from 'fastify'
@@ -23,6 +24,7 @@ server.register(createSubscriberRoute)
 server.register(generateReferralLinkRoute)
 server.register(eventInviteRoute)
 server.register(getSubscribersBySubscriberIdRoute)
+server.register(getReferralRankRoute)
 
 const start = async () => {
   try {
