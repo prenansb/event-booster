@@ -3,8 +3,8 @@ import { referrals } from '@/db/schema/referrals'
 import { desc, sql } from 'drizzle-orm'
 
 export async function getReferralRank() {
-  const pageSize = 10 // Number of results per page
-  const pageNumber = 1 // Current page number (1-based index)
+  const pageSize = 10
+  const pageNumber = 1
 
   const rank = await db
     .select({

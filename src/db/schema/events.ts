@@ -7,6 +7,6 @@ export const events = pgTable('events', {
   owner: uuid('owner')
     .references(() => hosts.id)
     .notNull(),
-  createdAt: timestamp('created_at').defaultNow().notNull(),
-  closedAt: timestamp('closed_at'),
+  startsAt: timestamp('starts_at', { mode: 'date' }).notNull(),
+  closesAt: timestamp('closes_at', { mode: 'date' }).notNull(),
 })
