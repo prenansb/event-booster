@@ -1,5 +1,6 @@
 import { events } from '@/db/schema/events'
 import {
+  doublePrecision,
   integer,
   pgTable,
   serial,
@@ -17,6 +18,7 @@ export const subscribers = pgTable('subscribers', {
     .notNull(),
   ticketNumber: serial('ticket_number').notNull(),
   referralLink: text('referral_link'),
-  referralLinkClicks: integer('referral_link_clicks').default(0),
+  referralLinkClicks: integer('referral_link_clicks').default(0).notNull(),
+  conversionRate: doublePrecision('conversion_rate').default(0),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })

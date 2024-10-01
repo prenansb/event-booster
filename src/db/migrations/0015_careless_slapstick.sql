@@ -1,0 +1,1 @@
+ALTER TABLE "subscribers" ADD COLUMN "conversion_rate" double precision DEFAULT 0;
